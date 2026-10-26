@@ -1,0 +1,2 @@
+category,item,estimated,actual,date,notes
+<img src=x onerror=alert(1)>,<script>alert('xss')</script>,100,150,2026-01-01,"<b onmouseover=alert(2)>hover</b>"

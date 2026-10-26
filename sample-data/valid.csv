@@ -1,0 +1,19 @@
+category,item,estimated,actual,date,notes
+Labour,Backend development,24000,27600,2026-03-31,Two extra sprints for API changes
+Labour,Frontend development,18000,18900,2026-03-31,
+Labour,QA and testing,8000,7400,2026-04-15,Automated suite reused
+Labour,Project management,9000,9300,2026-04-30,
+Labour,UX design,6500,6200,2026-02-28,
+Software,Cloud hosting (annual),4800,5150,2026-01-31,Region price change
+Software,CI/CD licences,1200,1200,2026-01-31,
+Software,Monitoring SaaS,900,2950,2026-02-15,Upgraded tier after incident
+Software,Database licence,3500,3500,2026-01-31,
+Hardware,Developer laptops,7500,7350,2026-01-20,
+Hardware,Test devices,1500,1380,2026-01-20,
+Training,Security awareness course,1200,1000,2026-02-10,
+Training,Cloud certification,2000,2400,2026-03-05,
+Consulting,Penetration test,6000,6000,2026-04-20,
+Consulting,Accessibility audit,2500,2750,2026-04-25,
+Travel,Client workshops,3000,4900,2026-03-12,Extra on-site visit
+Contingency,Emergency data recovery,0,3800,2026-03-20,Unplanned: disk failure on staging
+Other,Office supplies,400,420,2026-02-01,

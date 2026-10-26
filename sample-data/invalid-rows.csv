@@ -1,0 +1,6 @@
+category,item,estimated,actual,date,notes
+Labour,Valid row,1000,1100,2026-01-01,
+,Missing category,500,600,,
+Software,Not a number,abc,200,,
+Hardware,Negative actual,300,-50,,
+Travel,Bad date,100,120,31/12/2026,

@@ -1,0 +1,22 @@
+<%- include('partials/head', { title: mode === 'login' ? 'Log in' : 'Register' }) %>
+<section class="auth-card card">
+  <h1><%= mode === 'login' ? 'Log in' : 'Create an account' %></h1>
+  <p class="muted">Track estimated vs actual project costs, spot unusual expenses and export reports.</p>
+  <% if (errors.length) { %>
+    <div class="flash flash-error" role="alert"><ul><% errors.forEach(e => { %><li><%= e %></li><% }) %></ul></div>
+  <% } %>
+  <form method="post" action="/<%= mode %>" class="stack" autocomplete="on">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label>Username
+      <input name="username" required minlength="3" maxlength="32" pattern="[A-Za-z0-9_.\-]{3,32}" value="<%= values.username || '' %>" autocomplete="username">
+    </label>
+    <label>Password
+      <input name="password" type="password" required minlength="8" maxlength="128" autocomplete="<%= mode === 'login' ? 'current-password' : 'new-password' %>">
+    </label>
+    <button class="btn btn-primary" type="submit"><%= mode === 'login' ? 'Log in' : 'Register' %></button>
+  </form>
+  <p class="muted small">
+    <% if (mode === 'login') { %>No account? <a href="/register">Register</a><% } else { %>Already registered? <a href="/login">Log in</a><% } %>
+  </p>
+</section>
+<%- include('partials/foot') %>

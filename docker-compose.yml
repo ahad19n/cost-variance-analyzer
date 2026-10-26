@@ -1,0 +1,24 @@
+services:
+  app:
+    build: .
+    image: cost-variance-analyzer:latest
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      DB_PATH: /app/data/app.db
+    ports:
+      - "127.0.0.1:3000:3000"   # bound to localhost only: not reachable from the network
+    volumes:
+      - app-data:/app/data
+    read_only: true              # immutable container filesystem
+    tmpfs:
+      - /tmp
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 512m
+    pids_limit: 100
+    restart: unless-stopped
+
+volumes:
+  app-data:

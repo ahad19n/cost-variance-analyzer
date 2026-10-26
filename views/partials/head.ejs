@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="<%= csrfToken %>">
+  <title><%= typeof title !== 'undefined' ? title + ' · ' : '' %>Cost Variance Analyzer</title>
+  <link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">◧</span> Cost Variance Analyzer</a>
+  <% if (username) { %>
+    <nav class="topnav">
+      <a href="/">Projects</a>
+      <span class="who">Signed in as <strong><%= username %></strong></span>
+      <form method="post" action="/logout" class="inline">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button class="btn btn-ghost btn-sm" type="submit">Log out</button>
+      </form>
+    </nav>
+  <% } %>
+</header>
+<main class="container">
+<% if (flash) { %>
+  <div class="flash flash-<%= flash.type === 'error' ? 'error' : 'ok' %>" role="status"><%= flash.text %></div>
+<% } %>

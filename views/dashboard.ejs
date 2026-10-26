@@ -1,0 +1,48 @@
+<%- include('partials/head', { title: 'Projects' }) %>
+<%
+  const money = (n) => Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const pct = (p) => p === null ? 'n/a' : (p > 0 ? '+' : '') + p.toFixed(1) + '%';
+%>
+<div class="page-head">
+  <div>
+    <h1>Your projects</h1>
+    <p class="muted">Each project holds its own line items. Only you can see your projects.</p>
+  </div>
+</div>
+
+<div class="grid-2 dash">
+  <section class="card">
+    <h2>Projects</h2>
+    <% if (!projects.length) { %>
+      <p class="empty">No projects yet. Create one to start entering or uploading costs.</p>
+    <% } else { %>
+      <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Project</th><th class="num">Items</th><th class="num">Estimated</th><th class="num">Actual</th><th class="num">Variance %</th></tr></thead>
+        <tbody>
+        <% projects.forEach(p => { %>
+          <tr>
+            <td><a href="/projects/<%= p.id %>"><%= p.name %></a></td>
+            <td class="num"><%= p.item_count %></td>
+            <td class="num"><%= money(p.total_estimated) %></td>
+            <td class="num"><%= money(p.total_actual) %></td>
+            <td class="num <%= p.variance > 0 ? 'over' : p.variance < 0 ? 'under' : '' %>"><%= pct(p.variancePct) %></td>
+          </tr>
+        <% }) %>
+        </tbody>
+      </table>
+      </div>
+    <% } %>
+  </section>
+
+  <section class="card">
+    <h2>New project</h2>
+    <form method="post" action="/projects" class="stack">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <label>Name <input name="name" required maxlength="100" placeholder="e.g. Website redesign"></label>
+      <label>Description <textarea name="description" maxlength="500" rows="3" placeholder="Optional"></textarea></label>
+      <button class="btn btn-primary" type="submit">Create project</button>
+    </form>
+  </section>
+</div>
+<%- include('partials/foot') %>
